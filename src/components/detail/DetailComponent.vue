@@ -1,9 +1,14 @@
 <template>
   <main>
     <section class="title">
-      <img src="src/assets/girl-with-pearl-earring/hero-small.jpg" alt="">
+      <div class="detail-img" :class="{'img-preview': preview}">
+        <action-button v-if="preview" type="primary" class="close-prev-button" @click="preview = false">CLOSE</action-button>
+        <img class="hero" v-show="!preview" ref="previewImg" src="/src/assets/girl-with-pearl-earring/hero-small.jpg" alt="">
+        <img class="gallery" v-show="preview" src='/src/assets/girl-with-pearl-earring/gallery.jpg' alt="">
+      </div>
+      <div class="placeholder" :style="placeHolderStyles"></div>
       <div class="detail-overlay">
-        <action-button icon="view-image" type="secondary">View Image</action-button>
+        <action-button v-if="!preview" icon="view-image" type="secondary" @click="preview = true">View Image</action-button>
 
         <div class="detail-caption">
           <h2 class="heading-2 painting-name">
@@ -17,7 +22,7 @@
     </section>
 
     <section class="details">
-      <img class="artist-image" src="src/assets/girl-with-pearl-earring/artist.jpg" alt="">
+      <img class="artist-image" src="/src/assets/girl-with-pearl-earring/artist.jpg" alt="">
       <h1 class="year display">
         1665
       </h1>
@@ -43,6 +48,35 @@ export default {
   components: {
     ActionButton,
     SlideshowPlayer
+  },
+  data() {
+    return {
+      preview: false,
+    }
+  },
+  computed: {
+    placeHolderStyles() {
+      if (this.preview) {
+        const imageHeight = this.$refs.previewImg.height;
+        console.log(imageHeight);
+        return {
+          height: imageHeight + 'px',
+          width: '100%',
+          display: 'block',
+          background: "#7D7D7D",
+          transform: 'scale(0.95)',
+          "border-radius": "10px",
+
+        }
+      } else {
+        return {
+          display: 'none',
+          height: 0,
+          width: 0,
+        }
+      }
+        
+    }
   }
 }
 </script>
@@ -85,8 +119,22 @@ main {
 .title {
   position: relative;
 
-  > img {
+  > .detail-img {
     width: 100%;
+    display: flex;
+    align-items: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .close-prev-button {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+    }
   }
 
   .detail-overlay {
@@ -114,4 +162,58 @@ main {
 }
 
 
+/* ------- */
+
+section.title {
+  > .detail-img.img-preview {
+    animation: imageContAnim 1s;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    .close-prev-button {
+      display: block;
+      color: white;
+      font-size: 14px;
+      margin-bottom: 42px;
+      margin-top: 54px;
+    }
+
+    img {
+      animation: imageAnim 1s;
+    }
+  }
+}
+
+@keyframes imageContAnim {
+  0 {
+    
+  }
+  50% {
+    position: fixed;
+    z-index: 300;
+  }
+  100% {
+    position: fixed;
+    z-index: 300;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0 24px;
+  }
+}
+
+@keyframes imageAnim {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+  }
+  20% {
+    transform: translate(0, -200px) scale(1.5);
+  }
+
+  30% {
+    transform: translate(0,0) scale(1);
+  }
+  
+}
 </style>

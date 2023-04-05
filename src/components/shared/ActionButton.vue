@@ -1,6 +1,6 @@
 <template>
   <button :class="buttonClass">
-    <img v-if="icon" :src="iconImgPath" alt="">
+    <img v-if="icon" :src="`/src/assets/shared/icon-${this.icon}.svg`" alt="">
     <span>
         <slot></slot>
     </span>
@@ -16,16 +16,6 @@ export default {
     name: "ActionButton",
     props: ["type", "icon"],
     computed: {
-        iconImgPath() {
-            if (this.icon) {
-                const iconPath = `src/assets/shared/icon-${this.icon}.svg`
-                console.log(iconPath);
-                return iconPath;
-            } else {
-                return undefined;
-            }
-        },
-
         buttonClass() {
             switch (this.type) {
                 case "primary":
@@ -93,5 +83,9 @@ button {
 
 .misc:hover {
     color: rgba(0, 0, 0, 1);
+}
+
+.media:hover {
+    opacity: 0.75;
 }
 </style>

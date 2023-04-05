@@ -15,11 +15,11 @@
             </div>
 
             <div class="media-buttons">
-                <action-button>
-                    <img src="src/assets/shared/icon-back-button.svg" alt="">
+                <action-button type="media">
+                    <img src="/src/assets/shared/icon-back-button.svg" alt="">
                 </action-button>
-                <action-button>
-                    <img src="src/assets/shared/icon-next-button.svg" alt="">
+                <action-button type="media">
+                    <img src="/src/assets/shared/icon-next-button.svg" alt="">
                 </action-button>
             </div>
         </div>
@@ -70,9 +70,22 @@ export default {
     background: rgba(229, 229, 229, 1);
 
     .slider-child {
-        width: 40%;
+        /* width: 40%; */
         height: 100%;
         background: rgba(0, 0, 0, 1);
+        -webkit-box-shadow: -1px -1px 9px 0.5px #ced2ff;
+        -moz-box-shadow: -1px -1px 9px 0.5px #ced2ff;
+        box-shadow: -1px -1px 9px 0.5px #ced2ff;
+        animation: sliderRoll 2s infinite;
+    }
+}
+
+@keyframes sliderRoll {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%
     }
 }
 

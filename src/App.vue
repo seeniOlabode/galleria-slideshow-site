@@ -10,6 +10,8 @@ export default {
     DetailComponent,
     // HomeComponent
   },
+  computed: {
+  }
 }
 
 </script>
@@ -17,16 +19,15 @@ export default {
 <template>
   <header class="website-header">
     <div class="logo">
-      <img src="src/assets/shared/logo.svg" alt="">
+      <img src="/src/assets/shared/logo.svg" alt="">
     </div>
     <action-button type="primary">
       Start Slideshow
     </action-button>
   </header>
-  <!-- <home-component /> -->
-  <detail-component />
 
-    
+  <router-view></router-view>
+
 </template>
 
 <style>
