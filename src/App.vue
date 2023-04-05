@@ -1,9 +1,14 @@
 <script>
+// import HomeComponent from './components/home/HomeComponent.vue';
 import ActionButton from './components/shared/ActionButton.vue';
+import DetailComponent from './components/detail/DetailComponent.vue';
+
 export default {
   name: "App",
   components: {
-    ActionButton
+    ActionButton,
+    DetailComponent,
+    // HomeComponent
   },
 }
 
@@ -18,6 +23,9 @@ export default {
       Start Slideshow
     </action-button>
   </header>
+  <!-- <home-component /> -->
+  <detail-component />
+
     
 </template>
 

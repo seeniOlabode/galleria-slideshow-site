@@ -1,0 +1,16 @@
+main {
+    padding: 24px;
+    
+    &.galleria-layout {
+        display: grid;
+        grid-template-rows: masonry;
+        gap: 24px;
+        .gallery-painting {
+            width: 100%;
+        }
+        @media screen and (481px <= width <= 1200px) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: masonry;
+          }
+    }
+}

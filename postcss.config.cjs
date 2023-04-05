@@ -2,7 +2,7 @@ module.exports = {
     plugins: {
         "postcss-mixins": {},
         "postcss-nested": {},
-        "postcss-preset-env": {stage: 1},
+        "postcss-preset-env": {stage: 0},
         "postcss-import": {},
         "postcss-css-reset": {},
         "postcss-external-vars": {
@@ -15,6 +15,7 @@ module.exports = {
                     white: "rgba(255, 255, 255, 1)"
                 }
             },
-        }
+        },
+        "postcss-media-minmax": {},
     }
 }

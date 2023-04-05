@@ -1,4 +1,6 @@
 @import 'assets/css/typography.css';
+@import 'assets/css/layout.css';
+
 
 @reset-global pc;
 @reset-global mobile;

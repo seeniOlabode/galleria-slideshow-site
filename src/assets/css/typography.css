@@ -8,3 +8,53 @@
     font-size: 9px;
     letter-spacing: 2px;
 }
+
+.link-2 {
+    font-size: 9px;
+    text-decoration: underline;
+    color: rgba(125, 125, 125, 1);
+}
+
+
+
+h1 {
+    &.display {
+        font-size: 100px;
+        font-weight: 700;
+        line-height: 100px;
+        color: rgba(243, 243, 243, 1);
+    }
+}
+
+h2 {
+    &.heading-2 {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29px;
+    }
+}
+
+h3 {
+    &.heading-3 {
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+h5 {
+    &.subheading-2 {
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 17px;
+    }
+}
+
+p {
+    &.body {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgba(125, 125, 125, 1);
+        line-height: 28px;
+    }
+}
+

@@ -29,7 +29,15 @@ export default {
         buttonClass() {
             switch (this.type) {
                 case "primary":
-                    return this.type + ' link-1'
+                    return this.type + ' link-1';
+                    break;
+                case "secondary":
+                    return this.type;
+                    break;
+                case "misc":
+                    return this.type + ' link-2';
+                case "media":
+                    return this.type
             }
         }
     }
@@ -81,5 +89,9 @@ button {
 
 .secondary:hover {
     background: rgba(255, 255, 255, 0.25);
+}
+
+.misc:hover {
+    color: rgba(0, 0, 0, 1);
 }
 </style>
