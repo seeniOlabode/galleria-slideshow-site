@@ -5,12 +5,12 @@ import DetailView from "../views/DetailView.vue"
 
 const routes =  [
     {
-        path: "/",
+        path: "/galleria-slideshow-site/",
         name: "home",
         component: HomeView,
     },
     {
-        path: "/detail/:name",
+        path: "/galleria-slideshow-site/detail/:name",
         name: "detail",
         component: DetailView,
     },
