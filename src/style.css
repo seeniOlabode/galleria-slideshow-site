@@ -1,0 +1,8 @@
+@import 'assets/css/typography.css';
+
+@reset-global pc;
+@reset-global mobile;
+
+body {
+  font-family: 'Libre Baskerville', serif;
+}
