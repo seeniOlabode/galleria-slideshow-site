@@ -3,8 +3,8 @@
     <section class="title">
       <div class="detail-img" :class="{'img-preview': preview}">
         <action-button v-if="preview" type="primary" class="close-prev-button" @click="preview = false">CLOSE</action-button>
-        <img class="hero" v-show="!preview" ref="previewImg" src="/src/assets/girl-with-pearl-earring/hero-small.jpg" alt="">
-        <img class="gallery" v-show="preview" src='/src/assets/girl-with-pearl-earring/gallery.jpg' alt="">
+        <img class="hero" v-show="!preview" ref="previewImg" :src="`/${paintingData.images.hero.small}`" alt="">
+        <img class="gallery" v-show="preview" :src='`/${paintingData.images.gallery}`' alt="">
       </div>
       <div class="placeholder" :style="placeHolderStyles"></div>
       <div class="detail-overlay">
@@ -12,36 +12,39 @@
 
         <div class="detail-caption">
           <h2 class="heading-2 painting-name">
-            Girl with a Pearl Earring
+            {{paintingData.name}}
           </h2>
           <h5 class="subheading-2 artist-name">
-            Vincent Van Gogh
+            {{ paintingData.artist.name }}
           </h5>
         </div>
       </div>
     </section>
 
     <section class="details">
-      <img class="artist-image" src="/src/assets/girl-with-pearl-earring/artist.jpg" alt="">
+      <img class="artist-image" :src="`/${paintingData.artist.image}`" alt="">
       <h1 class="year display">
-        1665
+        {{ paintingData.year }}
       </h1>
 
       <p class="body">
-        The painting is a tronie, the Dutch 17th-century description of a 'head' that was not m eant to be a portrait. It depicts a European girl wearing an exotic dress, an oriental turban, and what was thought to be a very large pearl as an earring. In 2014, Dutch astrophysicist Vincent Icke raised doubts about the material of the earring and argued that it looks more like polished tin than pearl on the grounds of the specular reflection, the pear shape and the large size of the earring.
+        {{paintingData.description}}
       </p>
 
-      <action-button type="misc" class="source">Go to Source</action-button>
+      <a class="link-2 source" :href="paintingData.source">Go to Source</a>
     </section>
 
-    <slideshow-player />
-
+    <slideshow-player :data="paintingData" />
   </main>
 </template>
 
 <script>
 import ActionButton from '../shared/ActionButton.vue';
 import SlideshowPlayer from './SlideshowPlayer.vue';
+import data from '../../data/data.json';
+
+// console.log(data.find((paint) => paint.name == 'Starry Night'));
+
 
 export default {
   name: "DetailComponent",
@@ -52,9 +55,14 @@ export default {
   data() {
     return {
       preview: false,
+      data: data,
     }
   },
   computed: {
+    paintingData() {
+      const paintingName = this.$route.params.name
+      return data.find(paint => paint.name == paintingName);
+    },
     placeHolderStyles() {
       if (this.preview) {
         const imageHeight = this.$refs.previewImg.height;
@@ -112,6 +120,8 @@ main {
 
   .source {
     margin-top: 40px;
+    display: block;
+    text-transform: uppercase;
   }
 
 }
@@ -183,6 +193,7 @@ section.title {
 
     img {
       animation: imageAnim 1s;
+      margin-bottom: 100px;
     }
   }
 }

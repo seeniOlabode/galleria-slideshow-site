@@ -1,6 +1,6 @@
 <template>
     <main class="galleria-layout">
-        <painting-preview v-for="painting in paintingsData" :key="painting.name + painting.year" :paintingData="painting" />
+        <painting-preview v-for="painting in paintingsData" :key="painting.name + painting.year" :paintingData="painting" @click="$router.push(`detail/${painting.name}`)" />
     </main>
 </template>
 

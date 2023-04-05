@@ -7,10 +7,10 @@
         <div class="player-details">
             <div class="painting-slide-details">
                 <h3 class="heading-3">
-                    Girl with a Pearl Earring
+                    {{ data.name }}
                 </h3>
                 <h5 class="subheading-2 slide-artist-name">
-                    Vincent Van Gogh 
+                    {{ data.artist.name }}
                 </h5>
             </div>
 
@@ -30,6 +30,7 @@
 import ActionButton from '../shared/ActionButton.vue'
 export default {
   components: { ActionButton },
+  props: ["data"],
 
 }
 </script>

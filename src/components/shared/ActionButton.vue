@@ -81,10 +81,6 @@ button {
     background: rgba(255, 255, 255, 0.25);
 }
 
-.misc:hover {
-    color: rgba(0, 0, 0, 1);
-}
-
 .media:hover {
     opacity: 0.75;
 }
