@@ -1,6 +1,6 @@
 <template>
     <section class="gallery-painting">
-        <img :src="paintingData.images.gallery" alt="">
+        <img :src="previewImage" alt="">
 
         <div class="painting-caption">
             <h2 class="heading-2 painting-name">
@@ -16,7 +16,12 @@
 <script>
 export default {
     name: "PaintingPreview",
-    props: ["paintingData"]
+    props: ["paintingData"],
+    computed: {
+        previewImage() {
+            return new URL(`/${this.paintingData.images.gallery}`, import.meta.url).href
+        }
+    }
 }
 </script>
 

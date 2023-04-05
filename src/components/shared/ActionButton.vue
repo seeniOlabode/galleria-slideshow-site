@@ -1,6 +1,6 @@
 <template>
   <button :class="buttonClass">
-    <img v-if="icon" :src="`/src/assets/shared/icon-${this.icon}.svg`" alt="">
+    <img v-if="icon" :src="buttonLogoUrl" alt="">
     <span>
         <slot></slot>
     </span>
@@ -29,6 +29,9 @@ export default {
                 case "media":
                     return this.type
             }
+        },
+        buttonLogoUrl() {
+            return new URL(`/src/assets/shared/icon-${this.icon}.svg`, import.meta.url).href;
         }
     }
 }

@@ -3,8 +3,8 @@
     <section class="title">
       <div class="detail-img" :class="{'img-preview': preview}">
         <action-button v-if="preview" type="primary" class="close-prev-button" @click="preview = false">CLOSE</action-button>
-        <img class="hero" v-show="!preview" ref="previewImg" :src="`/${paintingData.images.hero.small}`" alt="">
-        <img class="gallery" v-show="preview" :src='`/${paintingData.images.gallery}`' alt="">
+        <img class="hero" v-show="!preview" ref="previewImg" :src="paintingDetailImage" alt="">
+        <img class="gallery" v-show="preview" :src='paintingGalleryUrl' alt="">
       </div>
       <div class="placeholder" :style="placeHolderStyles"></div>
       <div class="detail-overlay">
@@ -22,7 +22,7 @@
     </section>
 
     <section class="details">
-      <img class="artist-image" :src="`/${paintingData.artist.image}`" alt="">
+      <img class="artist-image" :src="paintingArtistUrl" alt="">
       <h1 class="year display">
         {{ paintingData.year }}
       </h1>
@@ -83,7 +83,15 @@ export default {
           width: 0,
         }
       }
-        
+    },
+    paintingDetailImage() {
+      return new URL(`/${this.paintingData.images.hero.small}`, import.meta.url).href
+    },
+    paintingGalleryUrl() {
+      return new URL( `/${this.paintingData.images.gallery}`, import.meta.url).href
+    },
+    paintingArtistUrl() {
+      return new URL(`/${this.paintingData.artist.image}`, import.meta.url).href
     }
   }
 }

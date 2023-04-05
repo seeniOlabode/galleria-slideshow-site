@@ -11,6 +11,9 @@ export default {
     // HomeComponent
   },
   computed: {
+    headerLogoUrl() {
+      return new URL('/src/assets/shared/logo.svg', import.meta.url).href
+    }
   }
 }
 
@@ -19,7 +22,7 @@ export default {
 <template>
   <header class="website-header">
     <div class="logo">
-      <img src="/src/assets/shared/logo.svg" alt="">
+      <img :src="headerLogoUrl" alt="">
     </div>
     <action-button type="primary">
       Start Slideshow
